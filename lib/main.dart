@@ -1,8 +1,10 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:fruits_app/features/splash_screen/splash_screen_page.dart';
+import 'package:fruits_app/core/helper_function/get_init_route.dart';
+import 'package:fruits_app/core/helper_function/route_generator.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(DevicePreview(builder: (context) => MyApp(), enabled: true));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreenPage(),
+      initialRoute: getInitRoute,
+      onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
     );
   }
 }
