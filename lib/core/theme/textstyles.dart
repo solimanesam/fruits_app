@@ -3,6 +3,11 @@ import 'package:fruits_app/core/helper_function/get_responsive_font_size.dart';
 
 class AppTextStyles {
   AppTextStyles._();
+  static TextStyle title(BuildContext context) => TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: getResponsiveFontSize(context: context, fontSize: 39),
+    height: 1.3,
+  );
 
   /// Headings
   static TextStyle h1(BuildContext context) => TextStyle(

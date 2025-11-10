@@ -8,27 +8,36 @@ import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_input_field.dart';
 import 'package:fruits_app/features/auth/view/component/auth_rich_text.dart';
 
-class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LogInPage> createState() => _LogInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LogInPageState extends State<LogInPage> {
-  final List<String> titles = ['Phone Number', 'Password'];
-  final List<String> hints = ['Mobile Number', 'Password'];
+class _SignUpPageState extends State<SignUpPage> {
+  final List<String> titles = [
+    'Full name',
+    'Phone Number with Whatsapp',
+    'Password',
+  ];
+  final List<String> hints = [
+    'First and Last Name',
+    'Phone Number',
+    'Password',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveOrientation(
-      portrait: LogInPortraitPage(titles: titles, hints: hints),
-      landscape: LogInLandScapePage(titles: titles, hints: hints),
+      portrait: SignUpPortraitPage(titles: titles, hints: hints),
+      landscape: SignUpLandScapePage(titles: titles, hints: hints),
     );
   }
 }
 
-class LogInPortraitPage extends StatelessWidget {
-  const LogInPortraitPage({
+class SignUpPortraitPage extends StatelessWidget {
+  const SignUpPortraitPage({
     super.key,
     required this.titles,
     required this.hints,
@@ -42,12 +51,15 @@ class LogInPortraitPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: context.height * .1),
+        padding: EdgeInsets.only(
+          top: context.height <= 1000 ? 0 : context.height * .1,
+        ),
+
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
-              spacing: 20,
+              spacing: 30,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -56,10 +68,11 @@ class LogInPortraitPage extends StatelessWidget {
                     context,
                   ).copyWith(color: AppColors.primary),
                 ),
-                Text('Login to Wikala', style: AppTextStyles.h1(context)),
+                Text('Sign Up to Wikala', style: AppTextStyles.h1(context)),
                 ...List.generate(
-                  2,
+                  3,
                   (index) => CustomInputField(
+                    height: index == 0 ? 45 : 55,
                     width: context.width <= 700
                         ? double.infinity
                         : context.width * 0.5,
@@ -68,29 +81,17 @@ class LogInPortraitPage extends StatelessWidget {
                     keyboardType: index == 1
                         ? TextInputType.number
                         : TextInputType.text,
-                    obscureText: index == 1 ? true : false,
+                    obscureText: index == 2 ? true : false,
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Forget Password?'),
-                    ),
-                    CustomButton(
-                      text: 'Login',
-                      onPressed: () {},
-                      width: context.width <= 700
-                          ? double.infinity
-                          : context.width * 0.5,
-                    ),
-                  ],
+                CustomButton(
+                  text: 'Sign Up',
+                  onPressed: () {},
+                  width: context.width <= 700
+                      ? double.infinity
+                      : context.width * 0.5,
                 ),
-                AuthRichText(
-                  text1: 'Don\'t have an account?',
-                  text2: 'Sign Up',
-                ),
+                AuthRichText(text1: 'Already have an account?', text2: 'Login'),
               ],
             ),
           ),
@@ -100,8 +101,8 @@ class LogInPortraitPage extends StatelessWidget {
   }
 }
 
-class LogInLandScapePage extends StatelessWidget {
-  const LogInLandScapePage({
+class SignUpLandScapePage extends StatelessWidget {
+  const SignUpLandScapePage({
     super.key,
     required this.titles,
     required this.hints,
@@ -114,7 +115,6 @@ class LogInLandScapePage extends StatelessWidget {
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(top: context.height * .1),
-
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Center(
@@ -136,12 +136,12 @@ class LogInLandScapePage extends StatelessWidget {
                           ).copyWith(color: AppColors.primary),
                         ),
                         Text(
-                          'Login to Wikala',
+                          'Sign Up to Wikala',
                           style: AppTextStyles.h1(context),
                         ),
                         AuthRichText(
-                          text1: 'Don\'t have an account?',
-                          text2: 'Sign Up',
+                          text1: 'Already have an account?',
+                          text2: 'Login',
                         ),
                       ],
                     ),
@@ -149,8 +149,9 @@ class LogInLandScapePage extends StatelessWidget {
                       spacing: 10,
                       children: [
                         ...List.generate(
-                          2,
+                          3,
                           (index) => CustomInputField(
+                            height: index == 0 ? 45 : 55,
                             width: context.width <= 700
                                 ? double.infinity
                                 : context.width * 0.5,
@@ -159,24 +160,15 @@ class LogInLandScapePage extends StatelessWidget {
                             keyboardType: index == 1
                                 ? TextInputType.number
                                 : TextInputType.text,
-                            obscureText: index == 1 ? true : false,
+                            obscureText: index == 2 ? true : false,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: Text('Forget Password?'),
-                            ),
-                            CustomButton(
-                              text: 'Login',
-                              onPressed: () {},
-                              width: context.width <= 700
-                                  ? double.infinity
-                                  : context.width * 0.5,
-                            ),
-                          ],
+                        CustomButton(
+                          text: 'Sign Up',
+                          onPressed: () {},
+                          width: context.width <= 700
+                              ? double.infinity
+                              : context.width * 0.5,
                         ),
                       ],
                     ),

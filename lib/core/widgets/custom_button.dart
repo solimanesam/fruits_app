@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/theme/app_colors.dart';
 import 'package:fruits_app/core/theme/textstyles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -7,6 +8,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final double? width;
   final Color? color;
+  final Color? borderColor;
   final TextStyle? textStyle;
   final double borderRadius;
 
@@ -19,6 +21,7 @@ class CustomButton extends StatelessWidget {
     this.color,
     this.textStyle,
     this.borderRadius = 30,
+    this.borderColor,
   });
 
   @override
@@ -26,14 +29,15 @@ class CustomButton extends StatelessWidget {
     return ConstrainedBox(
       constraints: width != null
           ? BoxConstraints.tightFor(width: width, height: height)
-          : const BoxConstraints(), // بدون width → على قد الكلمة
+          : const BoxConstraints(),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 3,
-          backgroundColor: color ?? const Color(0xFF194D36),
+          backgroundColor: color ?? AppColors.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
+            side: BorderSide(color: borderColor ?? AppColors.primary),
           ),
           padding: height == null
               ? const EdgeInsets.symmetric(horizontal: 20, vertical: 12)
