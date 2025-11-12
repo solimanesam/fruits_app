@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/utils/responsive_extention.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpWidget extends StatefulWidget {
-  //final void Function(String) onSubmit;
   const OtpWidget({super.key});
 
   @override
@@ -22,25 +24,58 @@ class _OtpWidgetState extends State<OtpWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = context.width;
+
+    final circleSize = min(max(screenWidth * 0.15, 50), 70.05).toDouble();
+    final borderColor = Colors.grey.shade400;
+    final fillColor = Colors.grey.shade100;
+
     final defaultPinTheme = PinTheme(
-      width: 60,
-      height: 60,
-      textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      width: circleSize,
+      height: circleSize,
+      textStyle: const TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+      ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        border: Border.all(color: Colors.grey.shade300),
+        color: fillColor,
+        shape: BoxShape.circle,
+        border: Border.all(color: borderColor, width: 1.5),
       ),
     );
 
-    return Scaffold(
-      body: Pinput(
-        length: 4,
-        controller: pinController,
-        focusNode: focusNode,
-        defaultPinTheme: defaultPinTheme,
-        onCompleted: (pin) {
-          // widget.onSubmit(pin);
-        },
+    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
+      border: Border.all(color: Colors.blueAccent, width: 2),
+      color: Colors.grey.shade50,
+    );
+
+    final submittedPinTheme = defaultPinTheme.copyDecorationWith(
+      color: Colors.grey.shade200,
+    );
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Pinput(
+          controller: pinController,
+          focusNode: focusNode,
+          length: 4,
+          obscureText: true,
+          obscuringWidget: const Icon(
+            Icons.circle,
+            size: 10,
+            color: Colors.black87,
+          ),
+          defaultPinTheme: defaultPinTheme,
+          focusedPinTheme: focusedPinTheme,
+          submittedPinTheme: submittedPinTheme,
+          showCursor: false,
+          separatorBuilder: (index) => SizedBox(width: circleSize * 0.15),
+          onCompleted: (pin) {
+            debugPrint('OTP entered: $pin');
+          },
+        ),
       ),
     );
   }

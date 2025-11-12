@@ -5,6 +5,7 @@ import 'package:fruits_app/features/auth/view/pages/log_in_page.dart';
 import 'package:fruits_app/features/auth/view/pages/recived_otp_page.dart';
 import 'package:fruits_app/features/auth/view/pages/sign_up_page.dart';
 import 'package:fruits_app/features/auth/view/pages/welcome_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/dashboard_page.dart';
 import 'package:fruits_app/features/dashboard/view/pages/home_page.dart';
 import 'package:fruits_app/features/onboarding/view/pages/on_boarding_page.dart';
 import 'package:fruits_app/features/splash_screen/splash_screen_page.dart';
@@ -32,8 +33,12 @@ class RouteGenerator {
 
       case RoutesConstants.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomePage());
+
       case RoutesConstants.recivedOtpRoute:
         return MaterialPageRoute(builder: (_) => const RecivedOtpPage());
+
+      case RoutesConstants.dashboardRoute:
+        return MaterialPageRoute(builder: (_) => const DashboardPage());
 
       default:
         return _errorRoute();

@@ -7,7 +7,11 @@ class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, RoutesConstants.homeRoute);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RoutesConstants.dashboardRoute,
+        (route) => false,
+      );
     });
     return Scaffold(
       body: Image.asset(

@@ -7,4 +7,5 @@ class RoutesConstants {
   static const String forgetPasswordRoute = '/forgetpass';
   static const String homeRoute = '/home';
   static const String recivedOtpRoute = '/recivedotp';
+  static const String dashboardRoute = '/dashboard';
 }

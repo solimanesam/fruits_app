@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
             side: BorderSide(color: borderColor ?? AppColors.primary),
           ),
           padding: height == null
-              ? const EdgeInsets.symmetric(horizontal: 20, vertical: 12)
+              ? const EdgeInsets.symmetric(horizontal: 20, vertical: 17)
               : EdgeInsets.zero,
         ),
         child: Text(
