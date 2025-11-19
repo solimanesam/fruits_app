@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
 import 'package:fruits_app/core/theme/textstyles.dart';
 
-class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const DashboardAppBar({super.key});
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
