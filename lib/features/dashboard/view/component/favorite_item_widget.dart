@@ -16,6 +16,7 @@ class FavoriteItemWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 82,
@@ -32,12 +33,9 @@ class FavoriteItemWidget extends StatelessWidget {
           Spacer(flex: 1),
           InfoFavoriteWidget(),
           Spacer(flex: 2),
-          Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.cancel_outlined, size: 30),
-            ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.cancel_outlined, size: 30),
           ),
         ],
       ),

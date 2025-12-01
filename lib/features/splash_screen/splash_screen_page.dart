@@ -9,7 +9,7 @@ class SplashScreenPage extends StatelessWidget {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        RoutesConstants.dashboardRoute,
+        RoutesConstants.contactUsRoute,
         (route) => false,
       );
     });

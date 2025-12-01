@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/helper_function/responsive_width.dart';
 import 'package:fruits_app/core/theme/textstyles.dart';
+import 'package:fruits_app/features/dashboard/view/component/image_widget.dart';
 
 class SellerWidget extends StatelessWidget {
   const SellerWidget({super.key});
@@ -21,18 +22,7 @@ class SellerWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: 82,
-              height: 82,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/group22.png'),
-                ),
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.white,
-                boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 3)],
-              ),
-            ),
+            ImageWidget(image: 'assets/images/group22.png'),
             Spacer(flex: 1),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

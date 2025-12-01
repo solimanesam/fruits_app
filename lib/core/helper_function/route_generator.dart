@@ -5,8 +5,14 @@ import 'package:fruits_app/features/auth/view/pages/log_in_page.dart';
 import 'package:fruits_app/features/auth/view/pages/recived_otp_page.dart';
 import 'package:fruits_app/features/auth/view/pages/sign_up_page.dart';
 import 'package:fruits_app/features/auth/view/pages/welcome_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/confirmed_error_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/confirmed_order_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/contact_us_page.dart';
 import 'package:fruits_app/features/dashboard/view/pages/dashboard_page.dart';
 import 'package:fruits_app/features/dashboard/view/pages/home_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/seller_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/terms_and_condition_page.dart';
+import 'package:fruits_app/features/dashboard/view/pages/update_profile_page.dart';
 import 'package:fruits_app/features/onboarding/view/pages/on_boarding_page.dart';
 import 'package:fruits_app/features/splash_screen/splash_screen_page.dart';
 
@@ -39,6 +45,24 @@ class RouteGenerator {
 
       case RoutesConstants.dashboardRoute:
         return MaterialPageRoute(builder: (_) => const DashboardPage());
+
+      case RoutesConstants.updateProfileRoute:
+        return MaterialPageRoute(builder: (_) => const UpdateProfilePage());
+
+      case RoutesConstants.sellerRoute:
+        return MaterialPageRoute(builder: (_) => const SellerPage());
+
+      case RoutesConstants.confirmedOrderRoute:
+        return MaterialPageRoute(builder: (_) => const ConfirmedOrderPage());
+
+      case RoutesConstants.confirmedErrorRoute:
+        return MaterialPageRoute(builder: (_) => const ConfirmedErrorPage());
+
+      case RoutesConstants.termsAndConditionRoute:
+        return MaterialPageRoute(builder: (_) => const TermsAndConditionPage());
+
+      case RoutesConstants.contactUsRoute:
+        return MaterialPageRoute(builder: (_) => const ContactUsPage());
 
       default:
         return _errorRoute();
